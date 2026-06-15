@@ -1,0 +1,55 @@
+{
+  "expo": {
+    "name": "TransitEase",
+    "slug": "TransitEase",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#5629b7"
+    },
+    "plugins": [
+      [
+        "expo-splash-screen",
+        {
+          "backgroundColor": "#5629b7",
+          "image": "./assets/splash.png",
+          "imageWidth": 250,
+          "dark": {
+            "backgroundColor": "#5629b7",
+            "image": "./assets/splash.png"
+          }
+        }
+      ],
+      "expo-font",
+      [
+        "expo-location",
+        {
+          "locationWhenInUsePermission": "Allow TransitEase to use your location to show your position on the map."
+        }
+      ],
+      "react-native-maps"
+    ],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.transitease.app",
+      "infoPlist": {
+        "NSLocationWhenInUseUsageDescription": "Allow TransitEase to use your location to show your position on the map."
+      }
+    },
+    "android": {
+      "package": "com.transitease.app",
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/icon.png",
+        "backgroundColor": "#5629b7"
+      },
+      "permissions": [
+        "ACCESS_COARSE_LOCATION",
+        "ACCESS_FINE_LOCATION"
+      ]
+    }
+  }
+}
