@@ -108,7 +108,7 @@ const OPTIONS: ModeOption[] = [
 
 export default function EndScreen() {
   const navigation =
-    useNavigation<NativeStackNavigationProp<RootStackParamList, "End">>();
+    useNavigation<NativeStackNavigationProp<ApplicationStackParams, "End">>();
   const insets = useSafeAreaInsets();
   const mapRef = useRef<MapView | null>(null);
   const subscriptionRef = useRef<ExpoLocation.LocationSubscription | null>(null);
@@ -222,7 +222,8 @@ export default function EndScreen() {
               style={styles.card}
               onPress={() => {
                 if (item.id === "train") {
-                  navigation.navigate("TrainJourney", {
+                  navigation.navigate("Journey",
+                    {
                     destination: "201 Johnson street, Mayhem way, SD14 3PN",
                   });
                 }

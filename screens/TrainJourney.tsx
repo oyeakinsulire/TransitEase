@@ -17,7 +17,7 @@ import {
 } from './TrainjourneyData';
 
 export default function JourneyScreen() {
-  const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
+  const navigation = useNavigation<NativeStackNavigationProp<ApplicationStackParams, "Splash">>();
   const insets = useSafeAreaInsets();
   const { width: viewportWidth } = useWindowDimensions();
   const mapRef = useRef<MapView | null>(null);

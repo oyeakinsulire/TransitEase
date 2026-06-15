@@ -4,7 +4,7 @@ import { useNavigation } from "@react-navigation/native";
 import type { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import TransitEaseLogo from "../components/TransitEaseColourLogo";
 
-const transitionduration= 50;
+const transitionduration= 2500; // Transition duration in milliseconds
 
 type  ApplicationStackParams= {
   Index: undefined;
@@ -12,11 +12,13 @@ type  ApplicationStackParams= {
   Maps: undefined;
 };
 
+// Welcome screen that appears after a user logs in, before navigating to the main app
 const TransitEase = () => {
   const fadeAnim = useRef(new Animated.Value(0)).current;
   const navigation =
     useNavigation<NativeStackNavigationProp<ApplicationStackParams, "Index">>();
 
+  // Effect to handle the fade-in and fade-out animation
   useEffect(() => {
     const fadeIn = Animated.timing(fadeAnim, {
       toValue: 1,
@@ -30,9 +32,9 @@ const TransitEase = () => {
       useNativeDriver: true,
     });
 
-    fadeIn.start(({ Completed }) => {
-      if (Completed) {
-        fadeOut.start(({ Completed: fadeOutCompleted }) => {
+    fadeIn.start(({ finished }) => {
+      if (finished) {
+        fadeOut.start(({finished: fadeOutCompleted }) => {
           if (fadeOutCompleted) {
             navigation.replace("Maps");
           }
@@ -52,6 +54,7 @@ const TransitEase = () => {
   );
 };
 
+// Styles for the Welcome screen
 const styles = StyleSheet.create({
   container: {
     flex: 1,

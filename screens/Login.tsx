@@ -13,7 +13,7 @@ import type {  ApplicationStackParams} from "../navigation/types";
 const Login = () => {
   const insets = useSafeAreaInsets();
   const navigation =
-    useNavigation<NativeStackNavigationProp<RootStackParamList, "Login">>();
+    useNavigation<NativeStackNavigationProp<ApplicationStackParams, "Login">>();
   const [forgotHovered, setForgotHovered] = useState(false);
   const [termsActive, setTermsActive] = useState(false);
   const [privacyActive, setPrivacyActive] = useState(false);

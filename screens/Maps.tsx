@@ -87,7 +87,7 @@ const initialRegion = {
 };
 
 export default function Maps() {
-  const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
+  const navigation = useNavigation<NativeStackNavigationProp<ApplicationStackParams>>();
   const [location, setLocation] = useState<{ latitude: number; longitude: number } | null>(null);
   const [permissionGranted, setPermissionGranted] = useState<boolean | null>(null);
   const [hoveredButton, setHoveredButton] = useState<string | null>(null);

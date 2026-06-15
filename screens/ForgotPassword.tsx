@@ -8,7 +8,7 @@ import type {  ApplicationStackParams} from "../navigation/types";
 const ForgotPassword = () => {
   const insets = useSafeAreaInsets();
   const navigation = useNavigation<
-    NativeStackNavigationProp<RootStackParamList, "ForgotPassword">
+    NativeStackNavigationProp<ApplicationStackParams, "ForgotPassword">
   >();
 
   return (

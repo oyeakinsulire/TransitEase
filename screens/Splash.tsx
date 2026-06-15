@@ -4,53 +4,56 @@ import { useNavigation } from "@react-navigation/native";
 import type { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import TransitEaseLogo from "../components/TransitEaseLogo";
 
-//
-const transitionduration = 500;
+// Duration for the fade-in and fade-out animations
+const FADE_DURATION = 2500;
 
-type  ApplicationStackParams= {
+type AppStack = {
   Index: undefined;
   GetStarted: undefined;
 };
 
+// Splash screen
 const TransitEase = () => {
-  const fadeTransition= useRef(new Animated.Value(0)).current;
+  const fadeAnim = useRef(new Animated.Value(0)).current;
   const navigation =
+    useNavigation<NativeStackNavigationProp<AppStack, "Index">>();
 
   useEffect(() => {
-    const fadeIn = Animated.timing(fadeTransition, {
+    const fadeIn = Animated.timing(fadeAnim, {
       toValue: 1,
-      duration: transitionduration,
+      duration: FADE_DURATION,
       useNativeDriver: true,
     });
 
-    const fadeOut = Animated.timing(fadeTransition, {
+    const fadeOut = Animated.timing(fadeAnim, {
       toValue: 0,
-      duration: transitionduration,
+      duration: FADE_DURATION,
       useNativeDriver: true,
     });
 
-    fadeIn.start(({ completed }) => {
-      if (completed) {
-        fadeOut.start(({ completed: fadeOutCompleted }) => {
-          if (fadeOutCompleted) {
+    fadeIn.start(({ finished }) => {
+      if (finished) {
+        fadeOut.start(({ finished: fadeOutFinished }) => {
+          if (fadeOutFinished) {
             navigation.replace("GetStarted");
           }
         });
       }
     });
-  }, [fadeTransition, navigation]);
+  }, [fadeAnim, navigation]);
 
   return (
-    <Animated.View style={[styles.container, { opacity: fadeTransition }]}>
-      <View style={styles.LogoContains}>
+    <Animated.View style={[styles.container, { opacity: fadeAnim }]}>
+      <View style={styles.TransitEaseLogoContainer}>
         <TransitEaseLogo width={120} height={208} />
       </View>
-  
+
       <Text style={styles.title}>TransitEase</Text>
     </Animated.View>
   );
 };
 
+//  Splash screen 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -58,7 +61,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
-  LogoContains: {
+  TransitEaseLogoContainer: {
     marginBottom: 0,
   },
   title: {

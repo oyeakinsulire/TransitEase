@@ -4,7 +4,7 @@ import { useNavigation } from "@react-navigation/native";
 import type { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import TransitEaseLogo from "../components/TransitEaseColourLogo";
 
-const transitionduration= 2500;
+const FADE_DURATION = 2500;
 
 type  ApplicationStackParams= {
   Index: undefined;
@@ -15,18 +15,18 @@ type  ApplicationStackParams= {
 const TransitEase = () => {
   const fadeAnim = useRef(new Animated.Value(0)).current;
   const navigation =
-    useNavigation<NativeStackNavigationProp<RootStackParamList, "Index">>();
+    useNavigation<NativeStackNavigationProp<ApplicationStackParams, "Index">>();
 
   useEffect(() => {
     const fadeIn = Animated.timing(fadeAnim, {
       toValue: 1,
-      duration: FADE_DURATION_MS,
+      duration: FADE_DURATION,
       useNativeDriver: true,
     });
 
     const fadeOut = Animated.timing(fadeAnim, {
       toValue: 0,
-      duration: FADE_DURATION_MS,
+      duration: FADE_DURATION,
       useNativeDriver: true,
     });
 

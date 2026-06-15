@@ -16,7 +16,7 @@ import type {  ApplicationStackParams} from "../navigation/types";
 const GetStarted = () => {
   const insets = useSafeAreaInsets();
   const navigation =
-    useNavigation<NativeStackNavigationProp<RootStackParamList, "GetStarted">>();
+    useNavigation<NativeStackNavigationProp<ApplicationStackParams, "GetStarted">>();
 
   return (
     <View style={styles.root}>

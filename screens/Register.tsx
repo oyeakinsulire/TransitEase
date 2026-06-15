@@ -8,7 +8,7 @@ import type {  ApplicationStackParams} from "../navigation/types";
 const Register = () => {
   const insets = useSafeAreaInsets();
   const navigation = useNavigation<
-    NativeStackNavigationProp<RootStackParamList, "Register">
+    NativeStackNavigationProp<ApplicationStackParams, "Register">
   >();
 
   return (
